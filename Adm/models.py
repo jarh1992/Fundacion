@@ -56,18 +56,19 @@ class Administrador(models.Model):
 
 class Usuario(models.Model):
     Nom = models.CharField(max_length=40, name='Nombre')
-    Ape = models.CharField(max_length=40, blank=True, name='Apellido')
+    Ape = models.CharField(max_length=40, name='Apellido')
     Num_id = models.CharField(max_length=10, unique=True, name='Identificacion')
     EST = (('activo', 'activo'), ('inactivo', 'inactivo'))
     Est = models.CharField(max_length=12, choices=EST, name='Estado')
     Ciu = models.CharField(max_length=60, blank=True, name='Ciudad')
     Dir = models.CharField(max_length=200, blank=True, name='Direccion')
     GEN = (('Masculino', 'Masculino'), ('Femenino', 'Femenino'))
-    Sex = models.CharField(max_length=12, choices=GEN, blank=True, name='Sexo')
+    Sex = models.CharField(max_length=12, choices=GEN, name='Sexo')
     Fec_ing = models.DateField(auto_now_add=True, name='Fecha de ingreso')
-    Tel = models.CharField(max_length=10, name='Telefono')
-    Email = models.EmailField(unique=True, name='E-mail')
+    Tel = models.CharField(max_length=10, blank=True, name='Telefono')
+    Email = models.EmailField(unique=True, blank=True, name='E-mail')
     Foto = models.ImageField()
+    Reg_civ = models.ImageField(name='Registro civil')
 
     def __str__(self):
         return self.Nom
